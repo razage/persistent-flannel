@@ -1,4 +1,4 @@
-from os.path import abspath, dirname
+from os.path import abspath, dirname, join
 
 BASE_DIR = abspath(dirname(__file__))
 NODE_DIR = join(BASE_DIR, "node_modules")
