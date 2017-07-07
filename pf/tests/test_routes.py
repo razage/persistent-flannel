@@ -21,4 +21,4 @@ class RouteTestCase(TestCase):
 
     def test_index(self):
         rv = self.app.get('/')
-        assert rv.status == "200"
+        assert rv.status == "200 OK"
