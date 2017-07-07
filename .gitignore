@@ -1,0 +1,10 @@
+# Extensions
+
+# Directories
+.idea/
+__pycache__/
+.webassets-cache/
+node_modules/
+
+# Files
+config.py

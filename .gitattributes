@@ -1,0 +1,14 @@
+* text=auto
+
+*.css eol=lf
+*.hbs eol=lf
+*.html eol=lf
+*.js eol=lf
+*.json eol=lf
+*.jsx eol=lf
+*.md eol=lf
+*.py eol=lf
+*.scss eol=lf
+*.sql eol=lf
+*.txt eol=lf
+*.yml eol=lf
