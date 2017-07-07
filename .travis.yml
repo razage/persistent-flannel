@@ -20,10 +20,10 @@ install:
     - pip install --upgrade pip setuptools
     - pip install -r requirements.txt
     - sed "s/mysql:\/\/test:test123@/mysql:\/\/root:@/" config.example.py > config.py
-    - python db_create.py
+    - python create_db.py
 
 script:
-    - python -m pytest tests/
+    - python -m pytest
 
 notifications:
     email: false
