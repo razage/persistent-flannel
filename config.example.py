@@ -1,6 +1,7 @@
 from os.path import abspath, dirname
 
 BASE_DIR = abspath(dirname(__file__))
+NODE_DIR = join(BASE_DIR, "node_modules")
 DEBUG = True
 CSRF_SESSION_KEY = '***'
 SECRET_KEY = '***'
