@@ -10,13 +10,13 @@ matrix:
 
 cache: pip
 
-services:
-  mysql
+services: mysql
 
 before_install:
-  - mysql -u root -e 'CREATE DATABASE pf DEFAULT CHARACTER SET utf8 COLLATE utf8_bin;'
+    - mysql -u root -e 'CREATE DATABASE pf DEFAULT CHARACTER SET utf8 COLLATE utf8_bin;'
 
 install:
+    - npm install
     - pip install --upgrade pip setuptools
     - pip install -r requirements.txt
     - sed "s/mysql:\/\/test:test123@/mysql:\/\/root:@/" config.example.py > config.py
