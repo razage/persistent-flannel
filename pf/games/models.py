@@ -12,7 +12,7 @@ game_tags = db.Table("assoc_game_tags", db.Column("game_id", db.Integer, db.Fore
 class Game(BaseModel):
     __tablename__ = "games"
 
-    name = db.Column(db.String(32))
+    name = db.Column(db.String(32), unique=True)
     release_date = db.Column(db.Date, nullable=True)
 
     developer = db.relationship("Company", secondary=game_developer)
