@@ -1,24 +1,36 @@
 import os
-from tempfile import mkstemp
-from unittest import TestCase
+import unittest
 
+from create_examples import populate_db
 from pf import app, db
 
 
-class RouteTestCase(TestCase):
+class RouteTestCase(unittest.TestCase):
 
     def setUp(self):
-        self.db, app.config['DATABASE'] = mkstemp()
+        if not os.environ.get("TRAVIS"):
+            app.config.from_object('config-test')
+        else:
+            app.config.from_object('config')
+
         app.config['TESTING'] = True
         self.app = app.test_client()
 
         with app.app_context():
             db.create_all()
-
-    def tearDown(self):
-        os.close(self.db)
-        os.unlink(app.config['DATABASE'])
+            populate_db()
 
     def test_index(self):
         rv = self.app.get('/')
         assert rv.status == "200 OK"
+
+    def test_game_view(self):
+        with app.app_context():
+            rv = self.app.get('/games/1')
+            rv2 = self.app.get('/games/200')
+
+            assert rv.status == "200 OK"
+            assert rv2.status == "404 NOT FOUND"
+
+if __name__ == '__main__':
+    unittest.main()
