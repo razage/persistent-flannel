@@ -1,10 +1,9 @@
 import logging
-from os.path import join
 
-from flask import Flask, render_template
-from flask_sqlalchemy import SQLAlchemy
+from flask import Flask
 from flask_assets import Bundle, Environment
 from flask_debugtoolbar import DebugToolbarExtension
+from flask_sqlalchemy import SQLAlchemy
 
 app = Flask(__name__)
 app.config.from_object('config')
@@ -17,16 +16,18 @@ db = SQLAlchemy(app)
 assets = Environment(app)
 assets.url = app.static_url_path
 
-# scss = Bundle("scss/main.scss", filters='pyscss', output="css/compiled.css")
-css = Bundle(join(app.config['NODE_DIR'], 'bootstrap', 'dist', 'css', 'bootstrap.css'), filters='cssmin',
-             output="css/main.css")
+scss = Bundle("scss/main.scss", filters='pyscss', output="css/compiled.css")
+js = Bundle("bower_components/jquery/dist/jquery.js", "bower_components/bootstrap/dist/js/bootstrap.js",
+            filters='jsmin', output='js/deps.js')
 
-assets.register('css_all', css)
+assets.register('js_all', js)
+assets.register('css_all', scss)
 
 if app.config['DEBUG']:
     app.config['DEBUG_TB_INTERCEPT_REDIRECTS'] = False
     toolbar = DebugToolbarExtension(app)
     app.logger.setLevel(logging.DEBUG)
+
 
     @app.after_request
     def forbid_cache(request):

@@ -5,6 +5,7 @@
 __pycache__/
 .webassets-cache/
 node_modules/
+bower_components/
 
 # Files
 config.py

@@ -1,16 +1,38 @@
+
 <!DOCTYPE html>
 <html lang="en">
     <head>
         {% assets "css_all" %}
             <link rel="stylesheet" href="{{ ASSET_URL }}">
         {% endassets %}
+        <link rel="stylesheet" href="{{ url_for('static', filename='bower_components/bootstrap/dist/css/bootstrap.min.css') }}">
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width,initial-scale=1">
         <title>{{ title }}</title>
     </head>
     <body>
-        {% block content %}
-        {% endblock %}
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-sm-12 col-md-12 col-lg-12 topbar">
+                    {% include "topbar.html" %}
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-3 col-md-2 col-lg-2 sidebar">
+                   {% include "sidebar.html" %}
+                </div>
+                <div class="col-sm-9 col-md-10 col-lg-10">
+                    <div class="viewbox"></div>
+                    <div class="content">
+                        {% block content %}
+                        {% endblock %}
+                    </div>
+                </div>
+            </div>
+        </div>
     </body>
+    {% assets "js_deps" %}
+        <script src="{{ ASSET_URL }}"></script>
+    {% endassets %}
 </html>
