@@ -8,16 +8,28 @@
         </thead>
         <tbody>
             <tr>
-                <td>{% if game.developers|length > 1 %}Developers{% else %}Developer{% endif %}</td>
+                <td>Developer{% if game.developers|length > 1 %}s{% endif %}</td>
                 <td>
-                    {% for developer in game.developers %}
-                        {{ developer.name }} {% if not loop.last %},{% endif %}
-                    {% endfor %}
+                    {% if game.developers|length == 0 %}
+                        N/a
+                    {% else %}
+                        {% for developer in game.developers %}
+                            {{ developer.name }}{% if not loop.last %}, {% endif %}
+                        {% endfor %}
+                    {% endif %}
                 </td>
             </tr>
             <tr>
-                <td>Publishers</td>
-                <td></td>
+                <td>Publisher{% if game.publishers|length > 1 %}s{% endif %}</td>
+                <td>
+                    {% if game.publishers|length == 0 %}
+                        N/a
+                    {% else %}
+                        {% for publisher in game.publishers %}
+                            {{ publisher.name }}{% if not loop.last %}, {% endif %}
+                        {% endfor %}
+                    {% endif %}
+                </td>
             </tr>
         </tbody>
     </table>
