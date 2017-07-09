@@ -10,3 +10,4 @@ bower_components/
 # Files
 config.py
 config-test.py
+deps.js

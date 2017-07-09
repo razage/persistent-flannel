@@ -38,6 +38,17 @@ html, body, .row {
         font-size: 25px;
         font-weight: bold;
     }
+
+    input[type="text"] {
+      background: $accent-2;
+      border: 1px solid $accent-1;
+      border-radius: 20px;
+
+      &::-webkit-input-placeholder {
+        color: $font-color;
+        opacity: 0.75;
+      }
+    }
 }
 
 .sidebar {

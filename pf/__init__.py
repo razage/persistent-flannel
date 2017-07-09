@@ -16,11 +16,11 @@ db = SQLAlchemy(app)
 assets = Environment(app)
 assets.url = app.static_url_path
 
-scss = Bundle("scss/main.scss", filters='pyscss', output="css/compiled.css")
+scss = Bundle("scss/main.scss", filters='pyscss', output="css/main.css")
 js = Bundle("bower_components/jquery/dist/jquery.js", "bower_components/bootstrap/dist/js/bootstrap.js",
             filters='jsmin', output='js/deps.js')
 
-assets.register('js_all', js)
+assets.register('js_deps', js)
 assets.register('css_all', scss)
 
 if app.config['DEBUG']:
