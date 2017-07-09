@@ -5,7 +5,9 @@
 __pycache__/
 .webassets-cache/
 node_modules/
+bower_components/
 
 # Files
 config.py
-create_examples.py
+config-test.py
+deps.js

@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+{% block content %}
+    <table width="100%" border="1">
+        <thead>
+            <tr>
+                <th colspan="2">{{ game.name }}</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Developer{% if game.developers|length > 1 %}s{% endif %}</td>
+                <td>
+                    {% if game.developers|length == 0 %}
+                        N/a
+                    {% else %}
+                        {% for developer in game.developers %}
+                            {{ developer.name }}{% if not loop.last %}, {% endif %}
+                        {% endfor %}
+                    {% endif %}
+                </td>
+            </tr>
+            <tr>
+                <td>Publisher{% if game.publishers|length > 1 %}s{% endif %}</td>
+                <td>
+                    {% if game.publishers|length == 0 %}
+                        N/a
+                    {% else %}
+                        {% for publisher in game.publishers %}
+                            {{ publisher.name }}{% if not loop.last %}, {% endif %}
+                        {% endfor %}
+                    {% endif %}
+                </td>
+            </tr>
+        </tbody>
+    </table>
+{% endblock %}

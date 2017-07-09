@@ -1,0 +1,21 @@
+{
+  "name": "persistent-flannel",
+  "description": "",
+  "main": "",
+  "authors": [
+    "Thomas Hinkle <thomashinkle2393@gmail.com>"
+  ],
+  "license": "",
+  "homepage": "https://github.com/razage/persistent-flannel",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "bootstrap": "^3.3.7"
+  }
+}
