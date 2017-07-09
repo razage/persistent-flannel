@@ -44,6 +44,10 @@ class User(BaseModel):
         return user
 
     @property
+    def is_active(self):
+        return self.status == UserStatus.ACTIVE
+
+    @property
     def is_mod(self):
         return self.level >= UserLevel.MOD
 
