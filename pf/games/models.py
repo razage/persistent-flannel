@@ -15,7 +15,6 @@ class Game(BaseModel):
     __tablename__ = "games"
 
     name = db.Column(db.String(32), unique=True)
-    release_date = db.Column(db.Date, nullable=True)
 
     developers = db.relationship('Company', secondary=game_developer, back_populates="developed_games")
     publishers = db.relationship('Company', secondary=game_publisher, back_populates="published_games")
@@ -32,9 +31,11 @@ class GameInfo(db.Model):
     __tablename__ = "game_info"
 
     game_id = db.Column(db.Integer, db.ForeignKey('games.id'), primary_key=True)
-    game = db.relationship('Game', back_populates="info")
-
+    release_date = db.Column(db.Date, nullable=True)
     description = db.Column(db.Text, nullable=True)
 
-    def __init__(self, description=None):
+    game = db.relationship('Game', back_populates="info")
+
+    def __init__(self, release_date=None, description=None):
+        self.release_date = release_date
         self.description = description
