@@ -2,6 +2,7 @@ from pf import db
 from pf.companies.models import Company
 from pf.games.models import Game, GameInfo
 from pf.tags.models import Tag
+from pf.users.models import User
 
 companies = ("NEKO WORKs", "Sekai Project", "Square Enix", "Frontwing", "Ludeon Studios", "Re-Logic", "ConcernedApe",
              "Chucklefish", "Marvelous", "HONEY∞PARADE GAMES", "Meteorise")
