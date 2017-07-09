@@ -26,8 +26,8 @@ class User(BaseModel):
     email = db.Column(EmailType(length=255), unique=True, nullable=True)
     username = db.Column(db.String(32), unique=True)
     password_hash = db.Column(PasswordType(max_length=255, schemes=['argon2']))
-    status = db.Column(ChoiceType(UserStatus, impl=db.Integer))
-    level = db.Column(ChoiceType(UserLevel, impl=db.Integer))
+    status = db.Column(ChoiceType(UserStatus, impl=db.Integer()))
+    level = db.Column(ChoiceType(UserLevel, impl=db.Integer()))
     created_time = db.Column(db.DateTime(timezone=False), default=datetime.utcnow)
     last_login_date = db.Column(db.DateTime(timezone=False), default=None, nullable=True)
 
