@@ -21,6 +21,9 @@ def populate_db():
     db.create_all()
     db.session.commit()
 
+    db.session.add(User("testuser", "password", "testuser@somewhere.com"))
+    db.session.commit()
+
     for c in companies:
         _c = Company(c)
         company_objs[c] = _c
