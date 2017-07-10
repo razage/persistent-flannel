@@ -43,6 +43,11 @@ class User(BaseModel):
         user = cls.query.filter_by(username=username).first()
         return user
 
+    @classmethod
+    def by_id(cls, uid):
+        user = cls.query.filter_by(id=uid).first()
+        return user
+
     @property
     def is_active(self):
         return self.status == UserStatus.ACTIVE
