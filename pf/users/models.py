@@ -23,13 +23,13 @@ class UserLevel(IntEnum):
 class User(BaseModel):
     __tablename__ = "users"
 
-    email = db.Column(EmailType(length=255), unique=True, nullable=True)
-    username = db.Column(db.String(32), unique=True)
-    password_hash = db.Column(PasswordType(max_length=255, schemes=['argon2']))
-    status = db.Column(ChoiceType(UserStatus, impl=db.Integer()))
-    level = db.Column(ChoiceType(UserLevel, impl=db.Integer()))
-    created_time = db.Column(db.DateTime(timezone=False), default=datetime.utcnow)
-    last_login_date = db.Column(db.DateTime(timezone=False), default=None, nullable=True)
+    email = db.Column(EmailType(length=255), unique=True)
+    username = db.Column(db.String(32), unique=True, nullable=False)
+    password_hash = db.Column(PasswordType(max_length=255, schemes=['argon2']), nullable=False)
+    status = db.Column(ChoiceType(UserStatus, impl=db.Integer()), nullable=False)
+    level = db.Column(ChoiceType(UserLevel, impl=db.Integer()), nullable=False)
+    created_time = db.Column(db.DateTime(timezone=False), default=datetime.utcnow, nullable=False)
+    last_login_date = db.Column(db.DateTime(timezone=False), default=None)
 
     def __init__(self, username, password, email=None):
         self.username = username
