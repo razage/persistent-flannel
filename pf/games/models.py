@@ -14,7 +14,7 @@ game_tags = db.Table("assoc_game_tags", db.Column("game_id", db.Integer, db.Fore
 class Game(BaseModel):
     __tablename__ = "games"
 
-    name = db.Column(db.String(32), unique=True)
+    name = db.Column(db.String(32), unique=True, nullable=False)
 
     developers = db.relationship('Company', secondary=game_developer, back_populates="developed_games")
     publishers = db.relationship('Company', secondary=game_publisher, back_populates="published_games")
@@ -22,17 +22,16 @@ class Game(BaseModel):
     tags = db.relationship('Tag', secondary=game_tags, back_populates="games_in_tag")
     info = db.relationship('GameInfo', uselist=False, back_populates="game")
 
-    def __init__(self, name, release_date=None):
+    def __init__(self, name):
         self.name = name
-        self.release_date = release_date
 
 
 class GameInfo(db.Model):
     __tablename__ = "game_info"
 
     game_id = db.Column(db.Integer, db.ForeignKey('games.id'), primary_key=True)
-    release_date = db.Column(db.Date, nullable=True)
-    description = db.Column(db.Text, nullable=True)
+    release_date = db.Column(db.Date)
+    description = db.Column(db.Text)
 
     game = db.relationship('Game', back_populates="info")
 
