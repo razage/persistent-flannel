@@ -2,6 +2,7 @@ import logging
 
 from flask import Flask
 from flask_assets import Bundle, Environment
+from flask_bootstrap import Bootstrap
 from flask_debugtoolbar import DebugToolbarExtension
 from flask_sqlalchemy import SQLAlchemy
 
@@ -13,14 +14,13 @@ app.config['MYSQL_DATABASE_CHARSET'] = 'utf8mb4'
 
 db = SQLAlchemy(app)
 
+boot = Bootstrap(app)
+
 assets = Environment(app)
 assets.url = app.static_url_path
 
 scss = Bundle("scss/main.scss", filters='pyscss', output="css/main.css")
-js = Bundle("bower_components/jquery/dist/jquery.js", "bower_components/bootstrap/dist/js/bootstrap.js",
-            filters='jsmin', output='js/deps.js')
 
-assets.register('js_deps', js)
 assets.register('css_all', scss)
 
 if app.config['DEBUG']:
