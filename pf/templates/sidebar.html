@@ -1,3 +1,8 @@
+{% if g.user is not none %}
+    <ul>
+        <li>{{ g.user.username }}</li>
+    </ul>
+{% endif %}
 <ul class="nav nav-pills nav-stacked">
     <li><a href="#"><span class="glyphicon glyphicon-th-large" aria-hidden="true"></span> Dashboard</a></li>
     <li id="library"><a href="#"><span class="glyphicon glyphicon-book" aria-hidden="true"></span> Library</a></li>

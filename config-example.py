@@ -3,6 +3,7 @@ from os.path import abspath, dirname, join
 BASE_DIR = abspath(dirname(__file__))
 
 DEBUG = True
+WTF_CSRF_ENABLED = True
 CSRF_SESSION_KEY = '***'
 SECRET_KEY = '***'
 
