@@ -1,6 +1,6 @@
 from datetime import datetime, timedelta
 
-from flask import Blueprint, flash, g, Markup, make_response, redirect, render_template, request, session, url_for
+from flask import Blueprint, flash, g, jsonify, Markup, make_response, redirect, render_template, request, session, url_for
 
 from pf import app, db
 from .forms import LoginForm
@@ -27,35 +27,57 @@ def before_request():
             session.modified = True
 
 
-# Don't actually render anything; this will just be used to log in...eventually
-@mod.route("/login", methods=['GET', 'POST'])
+# # Don't actually render anything; this will just be used to log in...eventually
+# @mod.route("/login", methods=['GET', 'POST'])
+# def login():
+#     if g.user:
+#         return redirect(url_for("home"))
+#
+#     form = LoginForm(request.form)
+#
+#     if request.method == 'POST' and form.validate():
+#         username = form.username.data.strip()
+#         password = form.password.data
+#         user = User.by_username(username)
+#
+#         if not user or password != user.password_hash or not user.is_active:
+#             flash(Markup('<strong>Login failed!</strong> Incorrect username or password.'), 'danger')
+#             return redirect(url_for('login'))
+#
+#         user.last_login_date = datetime.utcnow()
+#         db.session.add(user)
+#         db.session.commit()
+#
+#         g.user = user
+#         session['user_id'] = user.id
+#         session.permanent = True
+#         session.modified = True
+#
+#         return redirect(url_for("home"))
+#
+#     return render_template('users/login.html', title="Login", form=form)
+
+
+@mod.route("/login", methods=['POST'])
 def login():
     if g.user:
-        return redirect(url_for("home"))
+        pass
 
-    form = LoginForm(request.form)
+    username = request.values.get('username')
+    password = request.values.get('password')
+    user = User.by_username(username)
 
-    if request.method == 'POST' and form.validate():
-        username = form.username.data.strip()
-        password = form.password.data
-        user = User.by_username(username)
+    if not user or password != user.password_hash or not user.is_active:
+        pass
 
-        if not user or password != user.password_hash or not user.is_active:
-            flash(Markup('<strong>Login failed!</strong> Incorrect username or password.'), 'danger')
-            return redirect(url_for('login'))
+    user.last_login_date = datetime.utcnow()
+    db.session.add(user)
+    db.session.commit()
 
-        user.last_login_date = datetime.utcnow()
-        db.session.add(user)
-        db.session.commit()
-
-        g.user = user
-        session['user_id'] = user.id
-        session.permanent = True
-        session.modified = True
-
-        return redirect(url_for("home"))
-
-    return render_template('users/login.html', title="Login", form=form)
+    g.user = user
+    session['user_id'] = user.id
+    session.permanent = True
+    session.modified = True
 
 
 @mod.route("/logout")
