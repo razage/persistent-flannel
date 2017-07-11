@@ -32,6 +32,8 @@
         </div>
     </div>
     {% block scripts %}
-        {{ super() }}
+        {% assets "js_libs" %}
+            <script src="{{ ASSET_URL }}"></script>
+        {% endassets %}
     {% endblock %}
 {% endblock %}
