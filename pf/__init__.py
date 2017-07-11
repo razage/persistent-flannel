@@ -5,6 +5,7 @@ from flask import Flask
 from flask_assets import Bundle, Environment
 from flask_bootstrap import Bootstrap
 from flask_debugtoolbar import DebugToolbarExtension
+from flask_marshmallow import Marshmallow
 from flask_sqlalchemy import SQLAlchemy
 
 app = Flask(__name__)
@@ -14,6 +15,8 @@ app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 app.config['MYSQL_DATABASE_CHARSET'] = 'utf8mb4'
 
 db = SQLAlchemy(app)
+
+ma = Marshmallow(app)
 
 boot = Bootstrap(app)
 
