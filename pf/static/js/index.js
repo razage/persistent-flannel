@@ -1,5 +1,5 @@
 var login = new Vue({
-    el: '#login',
+    el: '.sidebar',
 
     data: {
         username: '',
@@ -22,6 +22,10 @@ var login = new Vue({
                     $("input[name='username'], input[name='password']").addClass("disabled");
                 }
             });
+        },
+
+        toggleForm: function() {
+            $("#login").toggle('slide');
         }
     }
 

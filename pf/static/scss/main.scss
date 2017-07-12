@@ -5,6 +5,10 @@ html, body, .row {
     overflow: hidden;
 }
 
+.row {
+    background: $accent-2;
+}
+
 .viewbox {
     display: none;
     z-index: 1000;
@@ -71,51 +75,59 @@ html, body, .row {
     }
 }
 
+#login {
+    float: left;
+    width: 25%;
+    background: $accent-1;
+    margin: 0px auto 0 auto;
+    display: none;
+    padding: 15px;
+
+    input:last-of-type {
+        margin-bottom: 10px;
+    }
+
+    .form-control {
+        color: $font-color;
+    }
+
+    input[type="text"], input[type="password"] {
+        background: $accent-2;
+        border: 1px solid $accent-1;
+
+        &::-webkit-input-placeholder {
+            color: $font-color;
+            opacity: 0.75;
+        }
+
+        &:-moz-placeholder {
+            color: $font-color;
+            opacity: 0.75;
+        }
+
+        &::-moz-placeholder {
+            color: $font-color;
+            opacity: 0.75;
+        }
+
+        &:-ms-input-placeholder {
+            color: $font-color;
+            opacity: 0.75;
+        }
+
+        &::-ms-input-placeholder {
+            color: $font-color;
+            opacity: 0.75;
+        }
+    }
+}
+
 .sidebar {
     background: $accent-1;
     height: calc(100vh - 50px);
 
-    #login {
-        width: 90%;
-        margin: 5px auto 0 auto;
-
-        input:last-of-type {
-            margin-bottom: 10px;
-        }
-
-        .form-control {
-            color: $font-color;
-        }
-
-        input[type="text"], input[type="password"] {
-            background: $accent-2;
-            border: 1px solid $accent-1;
-
-            &::-webkit-input-placeholder {
-                color: $font-color;
-                opacity: 0.75;
-            }
-
-            &:-moz-placeholder {
-                color: $font-color;
-                opacity: 0.75;
-            }
-
-            &::-moz-placeholder {
-                color: $font-color;
-                opacity: 0.75;
-            }
-
-            &:-ms-input-placeholder {
-                color: $font-color;
-                opacity: 0.75;
-            }
-
-            &::-ms-input-placeholder {
-                color: $font-color;
-                opacity: 0.75;
-            }
-        }
+    .nav li a:focus, .nav li a:active {
+        background: $accent-1;
     }
 }
 

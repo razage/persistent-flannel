@@ -1,3 +1,12 @@
+<div class="col-sm-3 col-md-2 col-lg-2 sidebar">
+    <ul class="nav nav-pills nav-stacked">
+        <li><a href="#" @click.prevent="toggleForm"><span class="glyphicon glyphicon-user" aria-hidden="true"></span> User</a></li>
+        <li><a href="#"><span class="glyphicon glyphicon-th-large" aria-hidden="true"></span> Dashboard</a></li>
+        <li id="library"><a href="#"><span class="glyphicon glyphicon-book" aria-hidden="true"></span> Library</a></li>
+        <li><a href="#"><span class="glyphicon glyphicon-list-alt" aria-hidden="true"></span> Changelog</a></li>
+        <li><a href="#"><span class="glyphicon glyphicon-cog" aria-hidden="true"></span> Settings</a></li>
+    </ul>
+</div>
 <div id="login">
     {% if g.user is not none %}
         <ul>
@@ -7,13 +16,7 @@
         <form role="form" method="post">
             <input class="form-control" type="text" name="username" placeholder="username" v-model="username">
             <input class="form-control" type="password" name="password" placeholder="password" v-model="password">
-            <button class="btn btn-success btn-block" v-on:click.prevent="login">Login</button>
+            <button class="btn btn-success btn-block" @click.prevent="login">Login</button>
         </form>
     {% endif %}
 </div>
-<ul class="nav nav-pills nav-stacked">
-    <li><a href="#"><span class="glyphicon glyphicon-th-large" aria-hidden="true"></span> Dashboard</a></li>
-    <li id="library"><a href="#"><span class="glyphicon glyphicon-book" aria-hidden="true"></span> Library</a></li>
-    <li><a href="#"><span class="glyphicon glyphicon-list-alt" aria-hidden="true"></span> Changelog</a></li>
-    <li><a href="#"><span class="glyphicon glyphicon-cog" aria-hidden="true"></span> Settings</a></li>
-</ul>
