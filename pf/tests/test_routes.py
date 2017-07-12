@@ -6,6 +6,7 @@ from flask import g
 from create_examples import populate_db
 from pf import app, db
 
+
 class RouteTestCase(unittest.TestCase):
 
     def setUp(self):
@@ -38,14 +39,14 @@ class RouteTestCase(unittest.TestCase):
         with app.app_context():
             rv = self.app.post('/users/login', data=dict(username="testuser", password="password"))
 
-            assert rv.status == "302 FOUND"
+            assert rv.status == "200 OK"
             assert g.user is not None
             assert g.user.username == "testuser"
 
     def test_logout(self):
         with app.app_context():
             rv = self.app.post('/users/login', data=dict(username="testuser", password="password"))
-            assert rv.status == "302 FOUND"
+            assert rv.status == "200 OK"
             assert g.user is not None
 
             rv = self.app.get('/users/logout')
