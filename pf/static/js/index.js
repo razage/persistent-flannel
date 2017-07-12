@@ -1,5 +1,16 @@
-var login = new Vue({
+var sidebar = new Vue({
     el: '.sidebar',
+
+    methods: {
+        toggleLoginForm: function() {
+            $("#login").toggle('slide');
+        }
+    }
+
+});
+
+var login = new Vue({
+    el: '#login',
 
     data: {
         username: '',
@@ -7,7 +18,10 @@ var login = new Vue({
     },
 
     methods: {
-        login: function() {
+        login: function(el) {
+            var that = this;
+            console.log(el);
+
             $.post({
                 url: "/users/login",
                 data: {
@@ -15,18 +29,14 @@ var login = new Vue({
                     password: this.password
                 },
                 success: function(response) {
-                    console.log(response);
+                    $(that.$el).toggle('slide');
+                    // This seems hacky to me. I'd like to move this to a component eventually.
+                    $("#profile").html('<a href="#"><span class="glyphicon glyphicon-user" aria-hidden="true"></span> '+ response.username +'</a>');
                 },
                 error: function(e) {
                     console.log(e.responseJSON);
-                    $("input[name='username'], input[name='password']").addClass("disabled");
                 }
             });
-        },
-
-        toggleForm: function() {
-            $("#login").toggle('slide');
         }
     }
-
-});
+})
