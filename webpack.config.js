@@ -23,6 +23,7 @@ module.exports = {
       },
       {
         test: /\.js$/,
+        exclude: /node_modules/,
         use: [
           {
             loader: 'babel-loader',
@@ -47,6 +48,10 @@ module.exports = {
     new webpack.ProvidePlugin({
       $: "jquery",
       jQuery: "jquery"
+    }),
+    new webpack.ProvidePlugin({
+        _: "underscore",
+        underscore: "underscore"
     })
   ]
 }

@@ -5,10 +5,9 @@
 __pycache__/
 .webassets-cache/
 node_modules/
-bower_components/
 
 # Files
+bundle.js
 config.py
 config-test.py
-deps.js
 test_data.json
