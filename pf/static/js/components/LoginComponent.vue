@@ -20,7 +20,6 @@
         methods: {
             login: function(el) {
                 var that = this;
-                console.log(el);
 
                 $.post({
                     url: "/users/login",
