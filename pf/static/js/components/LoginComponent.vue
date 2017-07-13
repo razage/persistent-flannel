@@ -3,7 +3,7 @@
         <form role="form" method="post">
             <input class="form-control" type="text" name="username" placeholder="username" v-model="username">
             <input class="form-control" type="password" name="password" placeholder="password" v-model="password">
-            <button class="btn btn-success btn-block" @click.prevent="login">Login</button>
+            <button class="btn btn-success btn-block btn-login" @click.prevent="login">Login</button>
         </form>
     </div>
 </template>
