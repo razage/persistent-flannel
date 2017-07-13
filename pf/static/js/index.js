@@ -18,6 +18,12 @@ var sidebar = new Vue({
     methods: {
         toggleLoginForm: function() {
             $("#login").toggle('slide');
+        },
+
+        clickedAway: function() {
+            if($('#login').is(":visible")) {
+                $("#login").toggle('slide');
+            }
         }
     }
 });
