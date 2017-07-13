@@ -24,16 +24,7 @@ assets = Environment(app)
 assets.url = app.static_url_path
 
 scss = Bundle("scss/main.scss", filters='pyscss', output="css/main.css")
-
-js_libs = [join(app.config['NODE_DIR'], 'jquery', 'dist', 'jquery.js'),
-           join(app.config['NODE_DIR'], 'vue', 'dist', 'vue.js'),
-           join(app.config['NODE_DIR'], 'bootstrap', 'dist', 'js', 'bootstrap.js'),
-           join(app.config['NODE_DIR'], 'underscore', 'underscore.js')]
-
-js_deps = Bundle(js_libs, filters='jsmin', output="js/deps.js")
-
 assets.register('css_all', scss)
-assets.register('js_libs', js_deps)
 
 if app.config['DEBUG']:
     app.config['DEBUG_TB_INTERCEPT_REDIRECTS'] = False

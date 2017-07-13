@@ -1,20 +1,16 @@
-var sidebar = new Vue({
-    el: '.sidebar',
+import Vue from 'vue';
+import VueClickaway from 'vue-clickaway'
+require('jquery-ui');
+//import { mixin as clickaway } from 'vue-clickaway';
 
-    methods: {
-        toggleLoginForm: function() {
-            $("#login").toggle('slide');
+var loginComponent = Vue.component('login-form', {
+    template: '    <div id="login"><form role="form" method="post"><input class="form-control" type="text" name="username" placeholder="username" v-model="username"><input class="form-control" type="password" name="password" placeholder="password" v-model="password"><button class="btn btn-success btn-block" @click.prevent="login">Login</button></form></div>',
+
+    data: function() {
+        return {
+            username: '',
+            password: ''
         }
-    }
-
-});
-
-var login = new Vue({
-    el: '#login',
-
-    data: {
-        username: '',
-        password: ''
     },
 
     methods: {
@@ -29,7 +25,7 @@ var login = new Vue({
                     password: this.password
                 },
                 success: function(response) {
-                    $(that.$el).toggle('slide');
+                    $('#login').toggle('slide');
                     // This seems hacky to me. I'd like to move this to a component eventually.
                     $("#profile").html('<a href="#"><span class="glyphicon glyphicon-user" aria-hidden="true"></span> '+ response.username +'</a>');
                 },
@@ -39,4 +35,20 @@ var login = new Vue({
             });
         }
     }
-})
+});
+
+var sidebar = new Vue({
+    el: '.sidebar-wrapper',
+
+    mixins: [ VueClickaway.mixin ],
+
+    components: {
+        'login-form': loginComponent
+    },
+
+    methods: {
+        toggleLoginForm: function() {
+            $("#login").toggle('slide');
+        }
+    }
+});
