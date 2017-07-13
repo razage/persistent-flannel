@@ -7,7 +7,7 @@ from .users.views import mod as user_mod
 
 @app.route("/")
 def home():
-    return render_template("base.html", title="Home")
+    return render_template("index.html", title="Home")
 
 # Blueprint registration
 app.register_blueprint(games_mod)

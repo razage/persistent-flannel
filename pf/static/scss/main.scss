@@ -5,6 +5,10 @@ html, body, .row {
     overflow: hidden;
 }
 
+.row {
+    background: $accent-2;
+}
+
 .viewbox {
     display: none;
     z-index: 1000;
@@ -71,9 +75,70 @@ html, body, .row {
     }
 }
 
+#login {
+    float: left;
+    width: 15%;
+    background: $accent-1;
+    margin: 0px auto 0 auto;
+    display: none;
+    padding: 15px;
+
+    input:last-of-type {
+        margin-bottom: 10px !important;
+    }
+
+    .form-control {
+        color: $font-color;
+    }
+
+    input[type="text"], input[type="password"] {
+        background: $accent-2;
+        border: none;
+        margin-bottom: 5px;
+
+        &:focus {
+            box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px rgba(184, 84, 0, .6);
+        }
+
+        &::-webkit-input-placeholder {
+            color: $font-color;
+            opacity: 0.75;
+        }
+
+        &:-moz-placeholder {
+            color: $font-color;
+            opacity: 0.75;
+        }
+
+        &::-moz-placeholder {
+            color: $font-color;
+            opacity: 0.75;
+        }
+
+        &:-ms-input-placeholder {
+            color: $font-color;
+            opacity: 0.75;
+        }
+
+        &::-ms-input-placeholder {
+            color: $font-color;
+            opacity: 0.75;
+        }
+    }
+
+    .btn-login {
+        width: 50%;
+        margin: 0 auto;
+    }
+}
+
 .sidebar {
     background: $accent-1;
     height: calc(100vh - 50px);
+
+    .nav li a:focus, .nav li a:active {
+        background: $accent-1;
+    }
 }
 
 .content {

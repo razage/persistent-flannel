@@ -19,9 +19,7 @@
             </div>
         </div>
         <div class="row">
-            <div class="col-sm-3 col-md-2 col-lg-2 sidebar">
-               {% include "sidebar.html" %}
-            </div>
+            {% include "sidebar.html" %}
             <div class="col-sm-9 col-md-10 col-lg-10">
                 <div class="viewbox"></div>
                 <div class="content">
@@ -32,6 +30,6 @@
         </div>
     </div>
     {% block scripts %}
-        {{ super() }}
+        <script src="{{ url_for('static', filename='js/bundle.js') }}"></script>
     {% endblock %}
 {% endblock %}

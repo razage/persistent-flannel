@@ -1,11 +1,18 @@
-{% if g.user is not none %}
-    <ul>
-        <li>{{ g.user.username }}</li>
-    </ul>
-{% endif %}
-<ul class="nav nav-pills nav-stacked">
-    <li><a href="#"><span class="glyphicon glyphicon-th-large" aria-hidden="true"></span> Dashboard</a></li>
-    <li id="library"><a href="#"><span class="glyphicon glyphicon-book" aria-hidden="true"></span> Library</a></li>
-    <li><a href="#"><span class="glyphicon glyphicon-list-alt" aria-hidden="true"></span> Changelog</a></li>
-    <li><a href="#"><span class="glyphicon glyphicon-cog" aria-hidden="true"></span> Settings</a></li>
-</ul>
+<div class="sidebar-wrapper" v-on-clickaway="clickedAway">
+    <div class="col-sm-3 col-md-2 col-lg-2 sidebar">
+        <ul class="nav nav-pills nav-stacked">
+            {% if g.user is none %}
+                <li id="profile"><a href="#" @click.prevent="toggleLoginForm"><span class="glyphicon glyphicon-user" aria-hidden="true"></span> User</a></li>
+            {% else %}
+                <li><a href="#"><span class="glyphicon glyphicon-user" aria-hidden="true"></span> {{ g.user.username }}</a></li>
+            {% endif %}
+            <li><a href="#"><span class="glyphicon glyphicon-th-large" aria-hidden="true"></span> Dashboard</a></li>
+            <li id="library"><a href="#"><span class="glyphicon glyphicon-book" aria-hidden="true"></span> Library</a></li>
+            <li><a href="#"><span class="glyphicon glyphicon-list-alt" aria-hidden="true"></span> Changelog</a></li>
+            <li><a href="#"><span class="glyphicon glyphicon-cog" aria-hidden="true"></span> Settings</a></li>
+        </ul>
+    </div>
+    {% if g.user is none %}
+        <login-form></login-form>
+    {% endif %}
+</div>
