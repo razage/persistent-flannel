@@ -10,7 +10,8 @@
     "jquery-ui-dist": "^1.12.1",
     "underscore": "^1.8.3",
     "vue": "^2.3.4",
-    "vue-clickaway": "^2.1.0"
+    "vue-clickaway": "^2.1.0",
+    "vue-ls": "^2.2.18"
   },
   "devDependencies": {
     "babel-core": "^6.25.0",

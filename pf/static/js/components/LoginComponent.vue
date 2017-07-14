@@ -9,6 +9,11 @@
 </template>
 
 <script>
+    import Vue from 'vue';
+    import VueLocalStorage from 'vue-ls';
+
+    Vue.use(VueLocalStorage);
+
     export default {
         data: function() {
             return {
@@ -18,9 +23,7 @@
         },
 
         methods: {
-            login: function(el) {
-                var that = this;
-
+            login: function() {
                 $.post({
                     url: "/users/login",
                     data: {
@@ -29,8 +32,13 @@
                     },
                     success: function(response) {
                         $('#login').toggle('slide');
+
+                        Vue.ls.set('username', response.username);
+                        Vue.ls.set('userId', response.id);
+
                         // This seems hacky to me. I'd like to move this to a component eventually.
                         $("#profile").html('<a href="#"><span class="glyphicon glyphicon-user" aria-hidden="true"></span> '+ response.username +'</a>');
+                        $(".navbar-right").show();
                     },
                     error: function(e) {
                         console.log(e.responseJSON);

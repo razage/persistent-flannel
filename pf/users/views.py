@@ -31,13 +31,16 @@ def before_request():
 
 @mod.route("/logout")
 def logout():
-    g.user = None
-    session.permanent = False
-    session.modified = False
+    if g.user is not None:
+        g.user = None
+        session.permanent = False
+        session.modified = False
 
-    response = make_response(redirect(url_for("home")))
-    response.set_cookie(app.session_cookie_name, expires=0)
-    return response
+        response = make_response(jsonify(success="You have been logged out."), 200)
+        response.set_cookie(app.session_cookie_name, expires=0)
+        return response
+    else:
+        return make_response(jsonify(error="You are not logged in."), 400)
 
 
 class LoginResource(Resource):

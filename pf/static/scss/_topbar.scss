@@ -8,6 +8,38 @@
         font-weight: bold;
     }
 
+    .glyphicon-off {
+        color: #B71C0C;
+    }
+
+    .navbar-collapse {
+        padding-left: 0;
+        padding-right: 0;
+        width: 100vw;
+        position: absolute;
+        top: 0;
+        left: 0;
+    }
+
+    .navbar-left {
+        li:focus {
+            outline: none;
+        }
+
+        .nav-left-item {
+            height: 50px;
+
+            a:focus {
+                outline: none;
+                background: inherit;
+            }
+        }
+    }
+
+    .navbar-right {
+        margin-right: 0;
+    }
+
     input[type="text"] {
       background: $accent-2;
       border: 1px solid $accent-1;
