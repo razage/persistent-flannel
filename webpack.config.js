@@ -40,7 +40,8 @@ module.exports = {
     alias: {
       'jquery-ui': 'jquery-ui-dist/jquery-ui.js',
       'vue$': 'vue/dist/vue.common.js',
-      'vue-clickaway': 'vue-clickaway/dist/vue-clickaway.common.js'
+      'vue-clickaway': 'vue-clickaway/dist/vue-clickaway.common.js',
+      'vue-ls': 'vue-ls/dist/vue-ls.js'
     }
   },
 
