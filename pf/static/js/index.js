@@ -3,7 +3,6 @@ import VueLocalStorage from 'vue-ls';
 import { mixin as clickaway } from 'vue-clickaway';
 import LoginComponent from './components/LoginComponent.vue';
 require('jquery-ui');
-require('underscore');
 
 Vue.use(VueLocalStorage);
 
@@ -33,6 +32,10 @@ var topbar = new Vue({
 var sidebar = new Vue({
     el: '.sidebar-wrapper',
 
+    data: {
+        locked: false
+    },
+
     mixins: [clickaway],
 
     components: {
@@ -41,12 +44,22 @@ var sidebar = new Vue({
 
     methods: {
         toggleLoginForm: function() {
-            $("#login").toggle('slide');
+            if(!this.locked) {
+                var that = this;
+                this.locked = true;
+
+                $("#login").toggle({
+                    effect: 'slide',
+                    complete: function() {
+                        that.locked = false;
+                    }
+                });
+            }
         },
 
         clickedAway: function() {
             if($('#login').is(":visible")) {
-                $("#login").toggle('slide');
+                this.toggleLoginForm();
             }
         }
     }
