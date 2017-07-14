@@ -50,7 +50,7 @@ class RouteTestCase(unittest.TestCase):
             assert g.user is not None
 
             rv = self.app.get('/users/logout')
-            assert rv.status == "302 FOUND"
+            assert rv.status == "200 OK"
             assert g.user is None
 
 if __name__ == '__main__':
