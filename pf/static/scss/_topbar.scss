@@ -21,8 +21,19 @@
         left: 0;
     }
 
-    .nav-left-item {
-        height: 50px;
+    .navbar-left {
+        li:focus {
+            outline: none;
+        }
+
+        .nav-left-item {
+            height: 50px;
+
+            a:focus {
+                outline: none;
+                background: inherit;
+            }
+        }
     }
 
     .navbar-right {
