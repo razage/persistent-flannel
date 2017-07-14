@@ -1,0 +1,9 @@
+@mixin score-gradient {
+    @for $i from 0 through 100 {
+        .score-gradient-#{$i} {
+            color: mix(#1EBC61, #F75C4C, percentage($i/100));
+        }
+    }
+}
+
+@include score-gradient;

@@ -1,15 +1,46 @@
-@import "colors";
+html, body, .row {
+    color: $font-color;
+    overflow: hidden;
+}
 
 .test {
     border: 1px dashed $test;
 }
 
-@mixin score-gradient {
-    @for $i from 0 through 100 {
-        .score-gradient-#{$i} {
-            color: mix(#1EBC61, #F75C4C, percentage($i/100));
+.row {
+    background: $accent-2;
+}
+
+.viewbox {
+    display: none;
+    z-index: 1000;
+    width: 100%;
+    height: 100%;
+}
+
+.nav {
+    background: inherit;
+
+    li a, li a:visited {
+        color: $font-color !important;
+
+         &:hover {
+            background: $accent-3 !important;
         }
+    }
+
+    li.active, li.active a:visited {
+        background: $font-color !important;
+        color: $white !important;
     }
 }
 
-@include score-gradient;
+.col-sm-3, .col-sm-9, .col-md-2, .col-md-10, .col-sm-12, .col-md-12, .col-lg-12 {
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+}
+
+.content {
+  background: $accent-2 !important;
+  height: calc(100vh - 50px);
+}
