@@ -4,11 +4,9 @@
           <ul class="nav navbar-nav navbar-left">
             <li class="nav-left-item"><a href="{{ url_for('home') }}"><span class="glyphicon glyphicon-home" aria-hidden="true"></span></a></li>
           </ul>
-          {% if g.user is not none %}
-              <ul class="nav navbar-nav navbar-right">
-                  <li @click.prevent="logout"><a href="#"><span class="glyphicon glyphicon-off" aria-hidden="true"></span></a></li>
-              </ul>
-          {% endif %}
+          <ul class="nav navbar-nav navbar-right" style="display: none">
+              <li @click.prevent="logout"><a href="#"><span class="glyphicon glyphicon-off" aria-hidden="true"></span></a></li>
+          </ul>
       </div>
   </div>
 </nav>

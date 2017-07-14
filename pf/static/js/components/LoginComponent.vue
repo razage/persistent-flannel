@@ -38,6 +38,7 @@
 
                         // This seems hacky to me. I'd like to move this to a component eventually.
                         $("#profile").html('<a href="#"><span class="glyphicon glyphicon-user" aria-hidden="true"></span> '+ response.username +'</a>');
+                        $(".navbar-right").show();
                     },
                     error: function(e) {
                         console.log(e.responseJSON);
