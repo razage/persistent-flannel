@@ -11,13 +11,9 @@
     float: left;
     width: 15%;
     background: $accent-1;
-    margin: 0px auto 0 auto;
+    margin: 0 auto;
     display: none;
     padding: 15px;
-
-    input:last-of-type {
-        margin-bottom: 10px !important;
-    }
 
     .form-control {
         color: $font-color;
@@ -56,6 +52,23 @@
             color: $font-color;
             opacity: 0.75;
         }
+    }
+
+    #remember {
+        height: 14px;
+        width: 15%;
+        float: left;
+
+        &:focus {
+            outline: none !important;
+            box-shadow: none !important;
+        }
+    }
+
+    label[for="remember"] {
+        font-size: 14px;
+        font-weight: normal;
+        margin-bottom: 10px;
     }
 
     .btn-login {
