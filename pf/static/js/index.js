@@ -1,10 +1,10 @@
 import Vue from 'vue';
-import VueLocalStorage from 'vue-ls';
+import VueCookie from 'vue-cookie';
 import { mixin as clickaway } from 'vue-clickaway';
 import LoginComponent from './components/LoginComponent.vue';
 require('jquery-ui');
 
-Vue.use(VueLocalStorage);
+Vue.use(VueCookie);
 
 var loginComponent = Vue.component('login-form', LoginComponent);
 
@@ -13,18 +13,15 @@ var topbar = new Vue({
 
     methods: {
       logout: function() {
-        if(Vue.ls.get('username') != null) {
-          $.get({
-            url: "/users/logout",
-            success: function(response) {
-              Vue.ls.clear();
-              window.location = "/";
-            },
-            error: function(e) {
-              console.log(e.responseJSON);
-            }
-          });
-        }
+        $.get({
+          url: "/users/logout",
+          success: function(response) {
+            window.location = "/";
+          },
+          error: function(e) {
+            console.log(e.responseJSON);
+          }
+        });
       }
     }
 });

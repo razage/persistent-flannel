@@ -11,9 +11,9 @@
 
 <script>
     import Vue from 'vue';
-    import VueLocalStorage from 'vue-ls';
+    import VueCookie from 'vue-cookie';
 
-    Vue.use(VueLocalStorage);
+    Vue.use(VueCookie);
 
     export default {
         data: function() {
@@ -26,6 +26,8 @@
 
         methods: {
           login: function() {
+            var that = this;
+
             $.post({
               url: "/users/login",
               data: {
@@ -36,8 +38,10 @@
               success: function(response) {
                 $('#login').toggle('slide');
 
-                Vue.ls.set('username', response.username);
-                Vue.ls.set('userId', response.id);
+                if(that.remember) {
+                  this.$cookie.set('uId', response.id, { expires: 7 });
+                  this.$cookie.set('username', response.username, { expires: 7 });
+                }
 
                 // This seems hacky to me. I'd like to move this to a component eventually.
                 $("#profile").html('<a href="#"><span class="glyphicon glyphicon-user" aria-hidden="true"></span> '+ response.username +'</a>');

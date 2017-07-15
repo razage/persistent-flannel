@@ -1,5 +1,5 @@
+from datetime import timedelta
 import logging
-from os.path import join
 
 from flask import Flask
 from flask_assets import Bundle, Environment
@@ -13,6 +13,7 @@ app.config.from_object('config')
 
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 app.config['MYSQL_DATABASE_CHARSET'] = 'utf8mb4'
+app.config['PERMANENT_SESSION_LIFETIME'] = timedelta(days=7)
 
 db = SQLAlchemy(app)
 
