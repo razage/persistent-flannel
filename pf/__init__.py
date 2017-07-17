@@ -6,6 +6,8 @@ from flask_assets import Bundle, Environment
 from flask_bootstrap import Bootstrap
 from flask_debugtoolbar import DebugToolbarExtension
 from flask_marshmallow import Marshmallow
+from flask_migrate import Migrate
+from flask_script import Manager
 from flask_sqlalchemy import SQLAlchemy
 
 app = Flask(__name__)
@@ -16,6 +18,9 @@ app.config['MYSQL_DATABASE_CHARSET'] = 'utf8mb4'
 app.config['PERMANENT_SESSION_LIFETIME'] = timedelta(days=7)
 
 db = SQLAlchemy(app)
+migrate = Migrate(app, db)
+
+manager = Manager(app)
 
 ma = Marshmallow(app)
 
