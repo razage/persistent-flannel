@@ -13,3 +13,8 @@ class Company(BaseModel):
     def __init__(self, name, founding_date=None):
         self.name = name
         self.founding_date = founding_date
+
+    @classmethod
+    def by_name(cls, name):
+        company = cls.query.filter_by(name=name).first()
+        return company

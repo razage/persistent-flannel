@@ -9,6 +9,7 @@ from pf.models import BaseModel
 class TagType(Enum):
     GENERIC = 0
     GENRE = 1
+    TECHNICAL = 2
 
 
 class Tag(BaseModel):
@@ -24,6 +25,11 @@ class Tag(BaseModel):
         self.name = name
         self.tag_type = tag_type
 
+    @classmethod
+    def by_name(cls, name):
+        tag = cls.query.filter_by(name=name).first()
+        return tag
+
     @property
     def is_genre(self):
         return self.tag_type is TagType.GENRE
@@ -31,3 +37,7 @@ class Tag(BaseModel):
     @property
     def is_generic(self):
         return self.tag_type is TagType.GENERIC
+
+    @property
+    def is_technical(self):
+        return self.tag_type is TagType.TECHNICAL
