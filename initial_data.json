@@ -1,0 +1,208 @@
+{
+  "companies": {
+    "Chucklefish": {
+      "founding_date": "2011-06-10"
+    },
+    "ConcernedApe": {
+      "founding_date": null
+    },
+    "Frontwing": {
+      "founding_date": "2000-08-04"
+    },
+    "HONEY\u221ePARADE GAMES": {
+      "founding_date": "2017-05-09"
+    },
+    "Ludeon Studios": {
+      "founding_date": "2013-11-04"
+    },
+    "Marvelous": {
+      "founding_date": "1997-06-25"
+    },
+    "Meteorise": {
+      "founding_date": "2012-04-26"
+    },
+    "NEKOWORKs": {
+      "founding_date": "2014-11-21"
+    },
+    "Re-Logic": {
+      "founding_date": "2011-05-16"
+    },
+    "Sekai Project": {
+      "founding_date": "2013-06-12"
+    },
+    "Square Enix": {
+      "founding_date": "1975-09-22"
+    }
+  },
+  "games": {
+    "FINAL FANTASY XIV Online": {
+      "developers": [
+        "Square Enix"
+      ],
+      "publishers": [
+        "Square Enix"
+      ],
+      "tags": [
+        "Fantasy",
+        "Massively Multiplayer",
+        "Online",
+        "RPG"
+      ],
+      "info": {
+        "release_date": "2014-02-18",
+        "description": ""
+      }
+    },
+    "NEKOPARA Vol. 3": {
+      "developers": [
+        "NEKOWORKs"
+      ],
+      "publishers": [
+        "Sekai Project"
+      ],
+      "tags": [
+        "Visual Novel"
+      ],
+      "info": {
+        "release_date": "2017-05-25",
+        "description": ""
+      }
+    },
+    "NieR:Automata": {
+      "developers": [
+        "Square Enix"
+      ],
+      "publishers": [
+        "Square Enix"
+      ],
+      "tags": [
+
+      ],
+      "info": {
+        "release_date": "2017-03-17",
+        "description": ""
+      }
+    },
+    "RimWorld": {
+      "developers": [
+        "Ludeon Studios"
+      ],
+      "publishers": [
+        "Ludeon Studios"
+      ],
+      "tags": [
+
+      ],
+      "info": {
+        "release_date": "2016-07-15",
+        "description": ""
+      }
+    },
+    "Stardew Valley": {
+      "developers": [
+        "ConcernedApe"
+      ],
+      "publishers": [
+        "Chucklefish"
+      ],
+      "tags": [
+
+      ],
+      "info": {
+        "release_date": "2016-02-26",
+        "description": ""
+      }
+    },
+    "Terraria": {
+      "developers": [
+        "Re-Logic"
+      ],
+      "publishers": [
+        "Re-Logic"
+      ],
+      "tags": [
+
+      ],
+      "info": {
+        "release_date": "2011-05-16",
+        "description": ""
+      }
+    },
+    "The Fruit of Grisaia": {
+      "developers": [
+        "Frontwing"
+      ],
+      "publishers": [
+        "Sekai Project"
+      ],
+      "tags": [
+        "Visual Novel"
+      ],
+      "info": {
+        "release_date": "2015-05-29",
+        "description": ""
+      }
+    },
+    "VALKYRIE DRIVE -BHIKKHUNI-": {
+      "developers": [
+        "Meteorise",
+        "HONEY\u221ePARADE GAMES"
+      ],
+      "publishers": [
+        "Marvelous"
+      ],
+      "tags": [
+
+      ],
+      "info": {
+        "release_date": "2017-06-20",
+        "description": ""
+      }
+    }
+  },
+  "tags": {
+    "2D": "Technical",
+    "3D": "Technical",
+    "Action": "Genre",
+    "Adventure": "Genre",
+    "Casual": "Generic",
+    "Co-op": "Generic",
+    "Competitive": "Generic",
+    "Crafting": "Generic",
+    "Fantasy": "Generic",
+    "First-person": "Genre",
+    "Horror": "Genre",
+    "Locked FoV": "Technical",
+    "Massively Multiplayer": "Generic",
+    "Multiplayer": "Generic",
+    "Multiplayer Only": "Generic",
+    "Mystery": "Generic",
+    "Online": "Technical",
+    "Puzzle": "Generic",
+    "RPG": "Genre",
+    "Real-time": "Generic",
+    "Sci-fi": "Generic",
+    "Shooter": "Genre",
+    "Simulation": "Generic",
+    "Singleplayer": "Generic",
+    "Singleplayer Only": "Generic",
+    "Strategy": "Genre",
+    "Survival": "Genre",
+    "Third-person": "Generic",
+    "Turn-based": "Generic",
+    "Visual Novel": "Generic",
+    "Walking Simulator": "Generic"
+  },
+  "users": {
+    "owner": {
+      "password": "password1",
+      "email": "owner@pf.com",
+      "level": 3
+    },
+    "testuser": {
+      "password": "password",
+      "email": "something@random.com",
+      "level": 0
+    }
+  }
+}

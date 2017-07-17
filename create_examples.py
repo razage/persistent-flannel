@@ -1,47 +1,63 @@
+import json
+
 from pf import db
 from pf.companies.models import Company
 from pf.games.models import Game, GameInfo
-from pf.tags.models import Tag
-from pf.users.models import User
+from pf.tags.models import Tag, TagType
+from pf.users.models import User, UserLevel
 
-companies = ("NEKO WORKs", "Sekai Project", "Square Enix", "Frontwing", "Ludeon Studios", "Re-Logic", "ConcernedApe",
-             "Chucklefish", "Marvelous", "HONEY∞PARADE GAMES", "Meteorise")
-company_objs = {}
-
-games = ("NEKOPARA Vol. 3", "Terraria", "RimWorld", "FINAL FANTASY XIV Online", "Stardew Valley",
-         "The Fruit of Grisaia", "NieR:Automata", "VALKYRIE DRIVE -BHIKKHUNI-")
-game_objs = {}
+userlevel_map = [UserLevel.STANDARD, UserLevel.MOD, UserLevel.ADMIN, UserLevel.SUPERADMIN]
+tagtype_map = {'Genre': TagType.GENERIC, 'Generic': TagType.GENERIC, 'Technical': TagType.TECHNICAL}
 
 
-# I'm using this function to test various things related to the database. This will not be used to initialize the db.
 def populate_db():
-    # Clean up any old data
+    raw_data = json.load(open("initial_data.json"))
+
     db.session.close()
     db.drop_all()
     db.create_all()
     db.session.commit()
 
-    db.session.add(User("testuser", "password", "testuser@somewhere.com"))
-    db.session.commit()
-
-    for c in companies:
-        _c = Company(c)
-        company_objs[c] = _c
-        db.session.add(_c)
-
-    for g in games:
-        _g = Game(g)
-        game_objs[g] = _g
-        db.session.add(_g)
+    for user in raw_data['users'].items():
+        u = User(user[0], user[1]['password'], user[1]['email'])
+        u.level = userlevel_map[user[1]['level']]
+        db.session.add(u)
 
     db.session.commit()
 
-    game_objs['NEKOPARA Vol. 3'].developers.append(company_objs['NEKO WORKs'])
-    game_objs['NEKOPARA Vol. 3'].publishers.append(company_objs['Sekai Project'])
+    for tag in raw_data['tags'].items():
+        t = Tag(tag[0], tagtype_map[tag[1]])
+        db.session.add(t)
 
-    game_objs['VALKYRIE DRIVE -BHIKKHUNI-'].developers.append(company_objs['Meteorise'])
-    game_objs['VALKYRIE DRIVE -BHIKKHUNI-'].developers.append(company_objs['HONEY∞PARADE GAMES'])
-    game_objs['VALKYRIE DRIVE -BHIKKHUNI-'].publishers.append(company_objs['Marvelous'])
+    db.session.commit()
+
+    for company in raw_data['companies'].items():
+        c = Company(company[0])
+        c.founding_date = None if company[1]['founding_date'] == '' else company[1]['founding_date']
+
+        db.session.add(c)
+
+    db.session.commit()
+
+    for game in raw_data['games'].items():
+        g = Game(game[0])
+        gi = GameInfo(game[1]['info']['release_date'], game[1]['info']['description'])
+
+        g.info = gi
+
+        for dev in game[1]['developers']:
+            d = Company.by_name(dev)
+            g.developers.append(d)
+
+        for pub in game[1]['publishers']:
+            p = Company.by_name(pub)
+            g.publishers.append(p)
+
+        for tag in game[1]['tags']:
+            t = Tag.by_name(tag)
+            g.tags.append(t)
+
+        db.session.add(g)
 
     db.session.commit()
 
