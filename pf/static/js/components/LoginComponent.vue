@@ -11,9 +11,9 @@
 
 <script>
     import Vue from 'vue';
-    import VueCookie from 'vue-cookie';
+    import VueCookies from 'vue-cookies';
 
-    Vue.use(VueCookie);
+    Vue.use(VueCookies);
 
     export default {
         data: function() {
@@ -39,8 +39,8 @@
                 $('#login').toggle('slide');
 
                 if(that.remember) {
-                  this.$cookie.set('uId', response.id, { expires: 7 });
-                  this.$cookie.set('username', response.username, { expires: 7 });
+                  that.$cookies.set('uId', response.id, "7d");
+                  that.$cookies.set('username', response.username, "7d");
                 }
 
                 // This seems hacky to me. I'd like to move this to a component eventually.

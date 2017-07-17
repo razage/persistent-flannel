@@ -41,7 +41,7 @@ module.exports = {
       'jquery-ui': 'jquery-ui-dist/jquery-ui.js',
       'vue$': 'vue/dist/vue.common.js',
       'vue-clickaway': 'vue-clickaway/dist/vue-clickaway.common.js',
-      'vue-cookie': 'vue-cookie/build/vue-cookie.js'
+      'vue-cookies': 'vue-cookies/vue-cookies.js'
     }
   },
 

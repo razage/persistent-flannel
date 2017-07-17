@@ -1,10 +1,10 @@
 import Vue from 'vue';
-import VueCookie from 'vue-cookie';
 import { mixin as clickaway } from 'vue-clickaway';
+import VueCookies from 'vue-cookies';
 import LoginComponent from './components/LoginComponent.vue';
 require('jquery-ui');
 
-Vue.use(VueCookie);
+Vue.use(VueCookies);
 
 var loginComponent = Vue.component('login-form', LoginComponent);
 
@@ -13,9 +13,13 @@ var topbar = new Vue({
 
     methods: {
       logout: function() {
+        var that = this;
+
         $.get({
           url: "/users/logout",
           success: function(response) {
+            that.$cookies.remove('uId');
+            that.$cookies.remove('username');
             window.location = "/";
           },
           error: function(e) {
