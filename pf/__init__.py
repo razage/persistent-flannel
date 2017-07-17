@@ -14,7 +14,6 @@ app = Flask(__name__)
 app.config.from_object('config')
 
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
-app.config['MYSQL_DATABASE_CHARSET'] = 'utf8mb4'
 app.config['PERMANENT_SESSION_LIFETIME'] = timedelta(days=7)
 
 db = SQLAlchemy(app)
