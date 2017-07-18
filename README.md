@@ -42,7 +42,8 @@ migration, use `manager.py db migrate`. To update your **existing** database, us
 If any code you are writing requires changes to models or adding additional models, you will need to include migrations
 in your pull request. Some of the time running the migrate command will be enough, but other times you will have to edit
 the migration to fix problems. A couple classic examples are changing a nullable field to a non-nullable field or creating
-a new non-nullable field that needs default data.
+a new non-nullable field that needs default data. An example I didn't find out until now, is that using custom data types
+from `sqlalchemy_utils` (or probably any other libraries) will also require you to manually edit the migration.
 
 ## Installation
 * Clone/download the repository
