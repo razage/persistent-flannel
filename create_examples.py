@@ -1,8 +1,10 @@
 import json
 
+from sqlalchemy_utils import Currency
+
 from pf import db
 from pf.companies.models import Company
-from pf.games.models import Game, GameInfo
+from pf.games.models import Game, GameInfo, GamePrice
 from pf.tags.models import Tag, TagType
 from pf.users.models import User, UserLevel
 
@@ -44,6 +46,13 @@ def populate_db():
         gi = GameInfo(game[1]['info']['release_date'], game[1]['info']['description'])
 
         g.info = gi
+
+        try:
+            for price in game[1]['prices']:
+                p = GamePrice( price['amount'], Currency(price['currency']))
+                g.prices.append(p)
+        except KeyError:
+            pass
 
         for dev in game[1]['developers']:
             d = Company.by_name(dev)
