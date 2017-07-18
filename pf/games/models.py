@@ -1,3 +1,5 @@
+from sqlalchemy_utils.types import CurrencyType, URLType
+
 from pf import db
 from pf.models import BaseModel
 
@@ -21,6 +23,7 @@ class Game(BaseModel):
     genres = db.relationship('Tag', secondary=game_genres, back_populates="games_in_genre")
     tags = db.relationship('Tag', secondary=game_tags, back_populates="games_in_tag")
     info = db.relationship('GameInfo', uselist=False, back_populates="game")
+    prices = db.relationship('GamePrice', back_populates="game")
 
     def __init__(self, name):
         self.name = name
@@ -32,9 +35,25 @@ class GameInfo(db.Model):
     game_id = db.Column(db.Integer, db.ForeignKey('games.id'), primary_key=True)
     release_date = db.Column(db.Date)
     description = db.Column(db.Text)
+    website = db.Column(URLType)
 
     game = db.relationship('Game', back_populates="info")
 
-    def __init__(self, release_date=None, description=None):
+    def __init__(self, release_date=None, description=None, website=None):
         self.release_date = release_date
         self.description = description
+        self.website = website
+
+
+class GamePrice(db.Model):
+    __tablename__ = "game_prices"
+
+    game_id = db.Column(db.Integer, db.ForeignKey('games.id'), primary_key=True)
+    price = db.Column(db.Float, nullable=False)
+    currency = db.Column(CurrencyType, nullable=False)
+
+    game = db.relationship('Game', back_populates="prices")
+
+    def __init__(self, price, currency):
+        self.price = price
+        self.currency = currency
